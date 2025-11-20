@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin • Parking Identification System</title>
+  <link rel="stylesheet" href="style.css?v=2" />
+  <script src="script.js" defer></script>
+</head>
+<body data-page="admin">
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
+    <span class="icon sun">☀</span>
+    <span class="icon moon">🌙</span>
+  </button>
+  <main class="layout">
+    <div class="top-bar">
+      <a href="index.html" class="back-link">← Back to Home</a>
+      <h1>Admin Dashboard</h1>
+    </div>
+
+    <section class="panel">
+      <h2>Lot Configuration</h2>
+      <div class="controls">
+        <label>
+          Total Slots
+          <input type="number" id="totalInput" min="1" max="60" value="20" />
+        </label>
+        <button class="btn" id="applyTotal">Update Slots</button>
+      </div>
+      <p class="subhead">Adjust the total number of slots (max 60). New slots default to empty.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Availability Overview</h2>
+      </div>
+      <div class="stats" id="adminStats"></div>
+    </section>
+
+    <section class="panel search-panel">
+      <div class="search-header">
+        <div>
+          <h2>Find a Slot</h2>
+          <p class="subhead">Try queries like “Slot 3”, “empty slots”, or “nearest empty slot”.</p>
+        </div>
+        <div class="search-controls">
+          <input type="text" id="adminSearch" class="search-input" placeholder='Search e.g. "Slot 5" or "VIP empty"' />
+          <button class="btn ghost" id="adminSearchClear">Clear</button>
+        </div>
+      </div>
+      <p class="search-hint" id="adminSearchHint">Showing all slots.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Parking Slots</h2>
+        <div class="legend">
+          <div class="legend-item">
+            <span class="legend-pill empty"></span> Empty
+          </div>
+          <div class="legend-item">
+            <span class="legend-pill occupied"></span> Occupied
+          </div>
+        </div>
+        <div class="legend legend-types">
+          <div class="legend-item">
+            <span class="legend-pill type-normal"></span> Normal
+          </div>
+          <div class="legend-item">
+            <span class="legend-pill type-vip"></span> VIP
+          </div>
+          <div class="legend-item">
+            <span class="legend-pill type-handicapped"></span> Handicapped
+          </div>
+        </div>
+      </div>
+      <div class="slot-grid" id="adminSlotGrid"></div>
+    </section>
+  </main>
+</body>
+</html>
+

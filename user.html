@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User View • Parking Identification System</title>
+  <link rel="stylesheet" href="style.css?v=2" />
+  <script src="script.js" defer></script>
+</head>
+<body data-page="user">
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
+    <span class="icon sun">☀</span>
+    <span class="icon moon">🌙</span>
+  </button>
+  <main class="layout">
+    <div class="top-bar">
+      <a href="index.html" class="back-link">← Back to Home</a>
+      <h1>Live Parking Status</h1>
+    </div>
+
+    <section class="panel">
+      <header class="panel-head">
+        <h2>Current Snapshot</h2>
+      </header>
+      <div class="stats" id="userStats"></div>
+    </section>
+
+    <section class="panel search-panel">
+      <div class="search-header">
+        <div>
+          <h2>Find a Slot</h2>
+          <p class="subhead">Type “Slot 3”, “empty slots”, or “nearest empty slot”.</p>
+        </div>
+        <div class="search-controls">
+          <input type="text" id="userSearch" class="search-input" placeholder='Search e.g. "Slot 5" or "VIP empty"' />
+          <button class="btn ghost" id="userSearchClear">Clear</button>
+        </div>
+      </div>
+      <p class="search-hint" id="userSearchHint">Showing all slots.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Parking Map</h2>
+        <p class="subhead">Green slots are available, red slots are occupied.</p>
+        <div class="legend">
+          <div class="legend-item">
+            <span class="legend-pill type-normal"></span> Normal
+          </div>
+          <div class="legend-item">
+            <span class="legend-pill type-vip"></span> VIP
+          </div>
+          <div class="legend-item">
+            <span class="legend-pill type-handicapped"></span> Handicapped
+          </div>
+        </div>
+      </div>
+      <div class="slot-grid" id="userSlotGrid"></div>
+    </section>
+  </main>
+</body>
+</html>
+
