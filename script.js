@@ -1,6 +1,6 @@
 const STORAGE_KEY = "parkingSlots";
 const DEFAULT_TOTAL = 20;
-const MAX_SLOTS = 60;
+const MAX_SLOTS = 100;
 
 const STATUS = {
   EMPTY: "empty",
