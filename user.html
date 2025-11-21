@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User View • Parking Identification System</title>
   <link rel="stylesheet" href="style.css?v=2" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js" defer></script>
+  <script src="firebase-config.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body data-page="user">
@@ -39,6 +42,52 @@
       <p class="search-hint" id="userSearchHint">Showing all slots.</p>
     </section>
 
+    <section class="panel forecast-panel">
+      <div class="panel-head">
+        <h2>Today’s Rush Outlook</h2>
+        <p class="subhead">Based on AI predictions from recent parking activity.</p>
+      </div>
+      <div class="forecast-grid" id="userForecast">
+        <div class="forecast-card highlight">
+          <p class="forecast-label">Expected waiting time</p>
+          <p class="forecast-value" data-forecast-value="wait">--</p>
+          <p class="forecast-meta" data-forecast-meta="wait">Connect Firebase</p>
+        </div>
+        <div class="forecast-card">
+          <p class="forecast-label">Rush probability</p>
+          <p class="forecast-value" data-forecast-value="rush">--</p>
+          <p class="forecast-meta" data-forecast-meta="rush">Connect Firebase</p>
+        </div>
+        <div class="forecast-card">
+          <p class="forecast-label">Quiet hour</p>
+          <p class="forecast-value" data-forecast-value="empty">--</p>
+          <p class="forecast-meta" data-forecast-meta="empty">Connect Firebase</p>
+        </div>
+      </div>
+      <p class="forecast-hint" id="userForecastStatus">Waiting for Firebase data…</p>
+    </section>
+
+    <section class="panel chat-panel">
+      <div class="panel-head">
+        <h2>AI Assistant</h2>
+        <p class="subhead">Ask about availability, VIP slots, or where to park.</p>
+      </div>
+      <div class="chat-container">
+        <div class="chat-messages" id="userChatMessages" aria-live="polite" aria-label="Chat conversation"></div>
+        <form class="chat-input-row" id="userChatForm">
+          <input
+            type="text"
+            id="userChatInput"
+            class="chat-input"
+            placeholder='Ask e.g. “Nearest empty slot?”'
+            autocomplete="off"
+            aria-label="Ask the assistant"
+          />
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
+    </section>
+
     <section class="panel">
       <div class="panel-head">
         <h2>Parking Map</h2>
@@ -60,8 +109,3 @@
   </main>
 </body>
 </html>
-
-
-
-
-

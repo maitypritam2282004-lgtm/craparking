@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin • Parking Identification System</title>
   <link rel="stylesheet" href="style.css?v=2" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js" defer></script>
+  <script src="firebase-config.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body data-page="admin">
@@ -23,11 +26,11 @@
       <div class="controls">
         <label>
           Total Slots
-          <input type="number" id="totalInput" min="1" max="100" value="20" />
+          <input type="number" id="totalInput" min="1" max="60" value="20" />
         </label>
         <button class="btn" id="applyTotal">Update Slots</button>
       </div>
-      <p class="subhead">Adjust the total number of slots (max 100). New slots default to empty.</p>
+      <p class="subhead">Adjust the total number of slots (max 60). New slots default to empty.</p>
     </section>
 
     <section class="panel">
@@ -49,6 +52,52 @@
         </div>
       </div>
       <p class="search-hint" id="adminSearchHint">Showing all slots.</p>
+    </section>
+
+    <section class="panel forecast-panel">
+      <div class="panel-head">
+        <h2>AI Rush Forecast</h2>
+        <p class="subhead">Predicted from the last 7 days of time-in / time-out activity.</p>
+      </div>
+      <div class="forecast-grid" id="adminForecast">
+        <div class="forecast-card">
+          <p class="forecast-label">Busy hour</p>
+          <p class="forecast-value" data-forecast-value="busy">--</p>
+          <p class="forecast-meta" data-forecast-meta="busy">Connect Firebase</p>
+        </div>
+        <div class="forecast-card">
+          <p class="forecast-label">Empty hour</p>
+          <p class="forecast-value" data-forecast-value="empty">--</p>
+          <p class="forecast-meta" data-forecast-meta="empty">Connect Firebase</p>
+        </div>
+        <div class="forecast-card">
+          <p class="forecast-label">Rush probability</p>
+          <p class="forecast-value" data-forecast-value="rush">--</p>
+          <p class="forecast-meta" data-forecast-meta="rush">Connect Firebase</p>
+        </div>
+      </div>
+      <p class="forecast-hint" id="adminForecastStatus">Waiting for Firebase data…</p>
+    </section>
+
+    <section class="panel chat-panel">
+      <div class="panel-head">
+        <h2>AI Assistant</h2>
+        <p class="subhead">Ask about availability, VIP slots, or where to park.</p>
+      </div>
+      <div class="chat-container">
+        <div class="chat-messages" id="adminChatMessages" aria-live="polite" aria-label="Chat conversation"></div>
+        <form class="chat-input-row" id="adminChatForm">
+          <input
+            type="text"
+            id="adminChatInput"
+            class="chat-input"
+            placeholder="Ask e.g. “Nearest empty slot?”"
+            autocomplete="off"
+            aria-label="Ask the assistant"
+          />
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
     </section>
 
     <section class="panel">
@@ -79,4 +128,3 @@
   </main>
 </body>
 </html>
-
